@@ -10,8 +10,8 @@
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="REACT"/>
   <Description DefaultValue="A template to get started."/>
-  <IconUrl DefaultValue="http://Dickordia.github.io/power-d/assets/icon-32.png"/>
-  <HighResolutionIconUrl DefaultValue="http://Dickordia.github.io/power-d/assets/icon-80.png"/>
+  <IconUrl DefaultValue="https://Dickordia.github.io/power-d/assets/icon-32.png"/>
+  <HighResolutionIconUrl DefaultValue="https://Dickordia.github.io/power-d/assets/icon-80.png"/>
   <SupportUrl DefaultValue="https://www.contoso.com/help"/>
   <AppDomains>
     <AppDomain>contoso.com</AppDomain>
@@ -20,7 +20,7 @@
     <Host Name="Presentation"/>
   </Hosts>
   <DefaultSettings>
-    <SourceLocation DefaultValue="http://Dickordia.github.io/power-d/taskpane.html"/>
+    <SourceLocation DefaultValue="https://Dickordia.github.io/power-d/taskpane.html"/>
     <RequestedWidth>400</RequestedWidth>
     <RequestedHeight>400</RequestedHeight>
   </DefaultSettings>
