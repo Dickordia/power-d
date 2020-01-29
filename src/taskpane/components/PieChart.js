@@ -7,7 +7,7 @@ import ReactDOM from "react-dom";
 
 import PieClass from "./PieClass";
 import { Button, ButtonType } from "office-ui-fabric-react";
-const kLocation = "https://localhost:3000"
+const kLocation = "https://dickordia.github.io/power-d"
 
 import Lottie from 'lottie-react-web'
 import animation from './anim3.json'

@@ -61,6 +61,14 @@ export default class App extends React.Component {
                              loop: true,}}
           />
           </div>
+          <Button
+            className="ms-welcome__action"
+            buttonType={ButtonType.hero}
+            iconProps={{ iconName: "ChevronRight" }}
+            onClick={this.click}
+          >
+            React Web
+          </Button>
         </div>
         <PieChart/>
       </div>
