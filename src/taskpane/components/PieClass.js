@@ -2,9 +2,12 @@ import React, * as react from "react";
 import * as d3 from "d3";
 
 class PieClass extends react.Component {
+
   constructor(props) {
     super(props);
+
     this.ref = react.createRef();
+
     this.createPie = d3
       .pie()
       .value(d => d.value)
@@ -13,9 +16,10 @@ class PieClass extends react.Component {
       .arc()
       .innerRadius(props.innerRadius)
       .outerRadius(props.outerRadius);
-    this.colors = d3.scaleOrdinal(d3.schemeCategory10);
+    this.colors = d3.schemeCategory10;
     this.format = d3.format(".2f");
   }
+  
   componentDidMount() {
     const svg = d3.select(this.ref.current);
     const data = this.createPie(this.props.data);
@@ -41,7 +45,7 @@ class PieClass extends react.Component {
       .append("path")
       .attr("class", "arc")
       .attr("d", this.createArc)
-      .attr("fill", (d, i) => this.colors(d.index));
+      .attr("fill", (d, i) => (this.props.data[i].color || this.colors[i]));
 
     path
       .append("text")
@@ -74,7 +78,7 @@ class PieClass extends react.Component {
     path
       .attr("class", "arc")
       .attr("d", this.createArc)
-      .attr("fill", (d, i) => this.colors(i));
+      .attr("fill", (d, i) => (this.props.data[i].color || this.colors[i]));
 
     const text = groupWithUpdate.append("text").merge(group.select("text"));
 

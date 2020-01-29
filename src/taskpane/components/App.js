@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import { OffCanvas, OffCanvasMenu, OffCanvasBody } from "react-offcanvas";
-
+import * as d3 from "d3";
 import { Button, ButtonType } from "office-ui-fabric-react";
 import Header from "./Header";
 import HeroList, { HeroListItem } from "./HeroList";
@@ -15,7 +15,11 @@ import { SVGMap } from "react-svg-map";
 import "react-svg-map/lib/index.css";
 
 import PieChart from "./PieChart"
+const kLocation = "https://localhost:3000"
 
+import Lottie from 'lottie-react-web'
+import animation from './anim4.json'
+import './PieChart.css'
 
 export default class App extends React.Component {
   constructor(props, context) {
@@ -24,40 +28,18 @@ export default class App extends React.Component {
     this.state = {
       listItems: [],
       value: 0,
-      isPanel: false,
+      isAnimated: false,
     };
   }
 
-  click3() {
-    this.setState({isPanel: !this.state.isPanel});
-  }
-
-  click2 = async () => {
-    Office.context.document.getFileAsync(Office.FileType.Compressed, { sliceSize: 65536 /*64 KB*/ },
-        function (result) {
-            if (result.status == "succeeded") {
-                // If the getFileAsync call succeeded, then
-                // result.value will return a valid File Object.
-                var myFile = result.value;
-                var sliceCount = myFile.sliceCount;
-                var slicesReceived = 0, gotAllSlices = true, docdataSlices = [];
-                app.showNotification("File size:" + myFile.size + " #Slices: " + sliceCount);
-
-                // Get the file slices.
-                getSliceAsync(myFile, 0, sliceCount, gotAllSlices, docdataSlices, slicesReceived);
-            }
-            else {
-                app.showNotification("Error:", result.error.message);
-            }
-    });
-  }
-
-  click = async () => {
-    Office.context.ui.displayDialogAsync(window.location.origin + "/dialog.html",
+  onShowReactWEB = () => {
+    Office.context.ui.displayDialogAsync(
+      kLocation + "/dialog.html",
     { height: 50, width: 50, displayInIframe: true})
   };
 
   render() {
+    console.log(this.state.isAnimated);
     const { title, isOfficeInitialized } = this.props;
 
     if (!isOfficeInitialized) {
@@ -67,33 +49,20 @@ export default class App extends React.Component {
     }
 
     return (
-      <div>
-      <PieChart/>
-      <div>
-        <Button
-          className="ms-welcome__action"
-          buttonType={ButtonType.hero}
-          iconProps={{ iconName: "ChevronRight" }}
-          onClick={this.click}
-        > React Web </Button>
-      </div>
-
-
-
-      <div className="ms-map">
-        <SVGMap map={USA} />
-
-
-      </div>
-
-      <Slider
-        label="S-L-I-D-E-R"
-        min={0}
-        max={50}
-        step={10}
-        defaultValue={20}
-        showValue={true}
-      />
+      <div className="container">
+        <div className="header">
+        <div>
+          <Lottie
+                  isStopped={!this.state.isAnimated}
+                  width={70}
+                  height={40}
+                  options={{ animationData: animation,
+                             autoplay: true,
+                             loop: true,}}
+          />
+          </div>
+        </div>
+        <PieChart/>
       </div>
     );
   }

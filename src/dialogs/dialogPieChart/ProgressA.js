@@ -1,29 +1,20 @@
 'use strict';
 
 import * as React from "react";
-import { Spinner, SpinnerType } from "office-ui-fabric-react";
-
-const e = React.createElement;
+import { Button, ButtonType } from "office-ui-fabric-react";
 
 class ProgressA extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { liked: false };
-  }
 
   render() {
-    if (this.state.liked) {
-      return 'You liked this.';
-    }
-
-    return e(
-      'button',
-      { onClick: () => this.setState({ liked: true }) },
-      'Like'
-    );
+    return <div>
+      <Button
+        className="ms-welcome__action"
+        buttonType={ButtonType.hero}
+        iconProps={{ iconName: "ChevronRight" }}
+        onClick={this.onShowReactWEB}
+      > React Web CUSTOM </Button>
+    </div>
   }
 }
 
-
-const domContainer = document.querySelector('#progress');
-ReactDOM.render(<ProgressA/>, domContainer);
+ReactDOM.render(<ProgressA/>, document.getElementById('progress'));

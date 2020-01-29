@@ -16,6 +16,16 @@
      padding: 0;
  }
 
+ .Absolute-Center {
+   position: absolute;
+   background-color: "#AABBCC";
+ }
+
+ .toogle {
+   width: 70px;
+   height: 30px;
+ }
+
  .ms-welcome__slider {
      align-items: center;
      width: 400px;
@@ -31,7 +41,7 @@
     display: flex;
     -webkit-flex-direction: column;
     flex-direction: column;
-    align-items: center;
+    align-items: left;
  }
 
  .ms-welcome__main {
@@ -79,8 +89,9 @@
  }
 
  .ms-welcome__action {
-     margin-top: 20px;
-     margin-bottom: 20px;
+   width: 50px;
+     margin-top: 0px;
+     margin-bottom: 10px;
  }
 
 .ms-Button.ms-Button--hero .ms-Button-label {

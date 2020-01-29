@@ -78,6 +78,11 @@ module.exports = async (env, options)  => {
           template: "./src/dialogs/dialogPieChart/dialogPieChart.html",
           chunks: ["polyfill", "dialogPieChart"]
       }),
+      new HtmlWebpackPlugin({
+          filename: "dialog.html",
+          template: "./dialog.html",
+          chunks: ["polyfill", "dialog"]
+      }),
       new CopyWebpackPlugin([
           {
               from: './assets',
